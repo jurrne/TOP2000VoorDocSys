@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="~/css/index.css"/>
+</head>
+<body>
+    <div class="container" id="containergrootte">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="5000" data-pause="hover">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+                <li data-target="#myCarousel" data-slide-to="3"></li>
+                <li data-target="#myCarousel" data-slide-to="4"></li>
+
+
+            </ol>
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <div class="carousel-content">
+                        <div style="margin: 0 auto">
+                            <p>
+                                <img class="img-fluid fotocarousel" alt="The 1st Message." src="https://lflmagazine.nl/wp-content/uploads/Queen-foto-LFL075-c_Chris-Hopper.png" />
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="carousel-content">
+                        <div style="margin: 0 auto">
+                            <p>
+                                <img class="img-fluid fotocarousel" alt="The 2nd Message." src="https://www.thisdayinmusic.com/wp-content/uploads/1947/07/Eagles-GettyImages-85351931.webp" />
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="carousel-content">
+                        <div style="margin: 0 auto"> 
+                            <p>
+                                <img class="img-fluid fotocarousel" alt="The 3nd Message." src="https://images0.persgroep.net/rcs/z5DsC7L9jzNJWAoCt-6_OE8FjPQ/diocontent/162295475/_fitwidth/694/?appId=21791a8992982cd8da851550a453bd7f&quality=0.8" />
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="carousel-content">
+                        <div style="margin: 0 auto">
+                            <p>
+                                <img class="img-fluid fotocarousel" alt="The 4nd Message." src="https://images.meppelercourant.nl/dma/Images/1gowk3-523817-2018_01_13_Tineke_Schouten_T-Splitsing_scene1_Foto_Roy_Beusker.jpg/alternates/LANDSCAPE_1920/523817-2018_01_13_Tineke_Schouten_T-Splitsing_scene1_Foto_Roy_Beusker.jpg" />
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="carousel-content">
+                        <div style="margin: 0 auto">
+                            <p>
+                                <img class="img-fluid fotocarousel" alt="The 5nd Message." src="https://cdn.nos.nl/image/2019/12/07/612323/2560x1440a.jpg" />
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only"> Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+    <h2 id="top6h2">Dit is DE top 6 van 2021!</h2>
+    @{
+        var i = 0;
+        foreach (var item in ViewBag.filteredData)
+        {
+            i++;
+            if (i == 7) { break; }
+            int? verschil = item.Vorigjaar - item.positie;
+                string foto = item.songFoto == null ? "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/640px-Image_not_available.png" : item.songFoto;
+                <div class="kaart">
+                    <div class="flex-container shadow">
+                        <div class="flex-contain">
+                            <div class="positie1"><p>@item.positie</p></div>
+                            <div class="positie2"><p>@verschil</p></div>
+                        </div>
+                        <div class="foto mb-3 container-fluid"><img id="foto-album" src="@foto"></div>
+                        <div class="flex-contain">
+                            <div class="text">
+                                <h4>@item.titel</h4>
+                                <h6><a class="nav-link text-dark" asp-controller="Home" asp-action="artiestinfo">@item.naam</a> </h6>
+                                <h6>@item.jaar</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+     }
+    </body>
+    </html>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

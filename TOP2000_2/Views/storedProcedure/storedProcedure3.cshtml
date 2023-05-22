@@ -1,0 +1,17 @@
+﻿<p class="text-light">De titel en de naam van de artiest van alle liedjes die in alle edities van de TOP2000 in de lijst hebben gestaan.</p>
+
+<table class="text-white border">
+	<tr class="border">
+		<th class="p-2">Titel</th>
+		<th class="p-2">artiest naam</th>
+		<th class="p-2">uitgifte jaar</th>
+	</tr>
+	@foreach (var item in ViewBag.filteredData)
+	{
+		<tr class="border">
+			<td>@item.titel</td>
+			<td>@item.naam</td>
+			<td>@item.jaar</td>
+		</tr>
+	}
+</table>

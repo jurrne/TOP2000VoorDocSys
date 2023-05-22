@@ -1,0 +1,21 @@
+﻿<p class="text-light">De artiestnaam, titel, het uitgiftejaar, de positie en het top2000 jaar van alle nummers die slechts één keer in de TOP2000 hebben gestaan.</p>
+
+<table class="text-white border">
+	<tr class="border">
+		<th class="p-2">Titel</th>
+		<th class="p-2">artiest naam</th>
+		<th class="p-2">uitgifte jaar</th>
+		<th class="p-2">positie</th>
+		<th class="p-2">top 2000 jaar</th>
+	</tr>
+	@foreach (var item in ViewBag.filteredData)
+	{
+		<tr class="border">
+			<td>@item.Titel</td>
+			<td>@item.Artiest</td>
+			<td>@item.Uitgiftejaar</td>
+			<td>@item.Positie</td>
+			<td>@item.TOP2000jaar</td>
+		</tr>
+	}
+</table>

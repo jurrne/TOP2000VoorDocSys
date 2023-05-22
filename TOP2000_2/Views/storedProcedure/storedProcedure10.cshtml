@@ -1,0 +1,30 @@
+﻿<p class="text-light">Van de 3 artiesten met de meeste nummers ineen gegeven jaarmoet de volgende informatie worden weergegeven:<br />
+	•De naam van de artiest<br />
+	•Het aantal liedjes waarmee de artiest in dat jaar in de lijst staat<br />
+	•De gemiddelde positie van alle liedjes van die artiest in dat jaar<br />
+	•De hoogste notering van die artiest in dat jaar
+r</p>
+	<form method="post" class="text-white">
+        <label for="jaar">Vul een jaar in voor de nummers die je van dat jaar wil laten zien</label>
+        <input type="number" name="jaar" id="jaar" min="1999" max="2021" value="@ViewBag.jaar">
+        <br/>
+        <input type="submit" value="Submit">
+    </form>
+
+<table class="text-white border">
+	<tr class="border">
+		<th class="p-2">artiest </th>
+		<th class="p-2">aantal</th>
+		<th class="p-2">gemiddelde</th>
+		<th class="p-2">hoogste</th>
+	</tr>
+	@foreach (var item in ViewBag.filteredData)
+	{
+		<tr class="border">
+			<td>@item.naam</td>
+			<td>@item.Aantal</td>
+			<td>@item.Gemiddelde</td>
+			<td>@item.Hoogste</td>
+		</tr>
+	}
+</table>

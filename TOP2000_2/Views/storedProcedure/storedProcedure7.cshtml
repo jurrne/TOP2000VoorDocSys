@@ -1,0 +1,29 @@
+﻿<p class="text-light">De positie, titel, naam van de artiest en het uitgiftejaar van alle liedjesdie in een op te geven jaar op dezelfde plek zijn blijven staan.</p>
+	<form method="post" class="text-white">
+        <label for="jaar">Vul een jaar in voor de nummers die je van dat jaar wil laten zien</label>
+        <input type="number" name="jaar" id="jaar" min="1999" max="2021" value="@ViewBag.jaar">
+        <br/>
+        <input type="submit" value="Submit">
+    </form>
+
+<table class="text-white border">
+	<tr class="border">
+		<th class="p-2">Titel</th>
+		<th class="p-2">artiest naam</th>
+		<th class="p-2">uitgifte jaar</th>
+		<th class="p-2">positie</th>
+		<th class="p-2">positie vorig jaar</th>
+		<th class="p-2">gedaald ten opzichte van vorigjaar</th>
+	</tr>
+	@foreach (var item in ViewBag.filteredData)
+	{
+		<tr class="border">
+			<td>@item.titel</td>
+			<td>@item.naam</td>
+			<td>@item.jaar</td>
+			<td>@item.positie</td>
+			<td>@item.Vorigjaar</td>
+			<td>@item.Gedaald</td>
+		</tr>
+	}
+</table>

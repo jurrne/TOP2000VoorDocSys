@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/top2000.css" asp-append-version="true" />
+    </head>
+<body>
+    <form method="post">
+        <label for="jaar">Vul een jaar in voor de nummers die je van dat jaar wil laten zien</label>
+        <input type="number" name="jaar" id="jaar" min="1999" max="2021" value="@ViewBag.jaar">
+        <br/>
+        <label for="naam">Vul de naam van de artiest die je wilt zien</label>
+        <input type="text" name="naam" id="naam" value="@ViewBag.Artiestnaam">
+        <br />
+        <input type="submit" value="Submit">
+
+    </form>
+    <h2>Dit is de top 2000 van @ViewBag.jaar</h2>
+    
+        @if (ViewBag.Artiestnaam == "")
+            {
+                @foreach (var item in ViewBag.filteredData)
+                {
+                    int? verschil = item.Vorigjaar - item.positie;
+                    string foto = item.songFoto == null ? "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/640px-Image_not_available.png" : item.songFoto;
+                    <div class="kaart">
+                        <div class="flex-container shadow">
+                            <div class="flex-contain">
+                                <div class="positie1"><p>@item.positie</p></div>
+                                <div class="positie2"><p>@verschil</p></div>
+                            </div>
+                            <div class="foto mb-3 container-fluid"><img id="foto-album" src="@foto"></div>
+                            <div class="flex-contain">
+                                <div class="text">
+                                    <h4>@item.titel</h4>
+                                    <h6><a class="nav-link text-dark" asp-controller="Home" asp-action="artiestinfo">@item.naam</a> </h6>
+                                    <h6>@item.jaar</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        else
+        {
+            @foreach (var item in ViewBag.filteredData)
+                {
+                    <div class="kaart ">
+                        <div class="flex-container">
+                            <div class="flex-contain">
+                                <div class="positieNaam"><p>@item.positie</p></div>
+                            </div>
+                            <div class="foto mb-3 mt-3"></div>
+                            <div class="flex-contain">
+                                <div class="text">
+                                    <h4>@item.titel</h4>
+                                    <h6><a class="nav-link text-dark" href="~/Home/artiestinfo">@item.naam</a></h6>
+                                    <h6>@item.jaar</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+             }
+        }
+     
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
